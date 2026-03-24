@@ -11,6 +11,6 @@ RUN npm run build
 FROM nginx:alpine
 WORKDIR /opt/server
 COPY --from=build /opt/server/build /usr/share/nginx/html
-CMD ["nginx", "-g", "daemon-off;"]
+CMD ["nginx", "-g", "daemon off;"]
 
 
