@@ -4,6 +4,8 @@ WORKDIR /opt/server
 COPY *.json .
 RUN npm install
 COPY . .
+ARG REACT_APP_BACKEND_URL
+ENV REACT_APP_BACKEND_URL=$REACT_APP_BACKEND_URL
 ENV NODE_OPTIONS=--openssl-legacy-provider
 RUN npm run build
 
