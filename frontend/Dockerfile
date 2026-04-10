@@ -12,7 +12,10 @@ RUN npm run build
 # Stage 2: Serve with Nginx
 FROM nginx:alpine
 WORKDIR /opt/server
+RUN addgroup -S agent && adduser -S agent -G agent && \
+    chown -R agent:agent /opt/server
 COPY --from=build /opt/server/build /usr/share/nginx/html
+USER agent
 CMD ["nginx", "-g", "daemon off;"]
 
 
